@@ -1,0 +1,3 @@
+
+class RepositoryInterface:
+    pass
