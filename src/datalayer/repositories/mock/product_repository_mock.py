@@ -1,5 +1,5 @@
 from src.datalayer.interfaces.product_repository_interface import ProductRepositoryInterface
-from src.domains.product import Product, ProductRegistration
+from src.domains.product import Product, ProductRegistration, UnitOfMeasureName
 
 from src.datalayer.repositories.mock.memdb import PRODUCT_DB
 
@@ -16,3 +16,12 @@ class ProductRepositoryMock(ProductRepositoryInterface):
         #product_already_exists cria uma lista e faz um filtro, recebendo uma função anonima (lambda que faz papel de função verdade, true ou false) e comparando de o name existe dentro de PRODUCT_DB. Se encontrar adiciona a lista e retorna True, impedindo o cadastro.
         product_already_exists = list(filter(lambda c: c.name==name, PRODUCT_DB))
         return True if len(product_already_exists) > 0 else False
+    
+    async def unit_not_registred(self, unit)-> bool:
+        if isinstance(unit, UnitOfMeasureName):
+            unit = unit.value
+        try:
+            UnitOfMeasureName(unit)
+            return False
+        except ValueError:
+            return True

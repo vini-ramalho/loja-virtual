@@ -22,4 +22,4 @@ class ProductRegistration(DomainBase):
     name:str
     description: str
     price: float 
-    unit: UnitOfMeasureName
+    unit: str

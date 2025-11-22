@@ -10,3 +10,6 @@ class ProductRepositoryInterface (RepositoryInterface):
     '''Verificar se o produto já existe, recebendo a pópria instancia e o name, que é uma string e deve retornar um booleano'''
     async def product_already_exists(self, name: str) -> bool:
         raise NotImplementedError
+    
+    async def unit_not_registred(self, unit: str) -> bool:
+        raise NotImplementedError
