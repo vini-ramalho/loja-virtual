@@ -12,6 +12,6 @@
 
 - Order
     - criar pedido
-    - obeter detalhe do pedido
+    - obter detalhe do pedido
     - atualizar status do pedido
     - listar pedidos

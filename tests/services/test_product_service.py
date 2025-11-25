@@ -53,6 +53,6 @@ async def test_should_raise_error_when_create_product_with_unit_not_registered()
     )
 
     with pytest.raises(ProductUnitDontExists) as error:
-
-        response = await service.register(product_registration=product_with_no_unit)
+        await service.register(product_registration=product_with_no_unit)
+        
     assert str(error.value) == 'UnitOfMeasure invalid'

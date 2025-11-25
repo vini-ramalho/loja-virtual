@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from uuid import UUID
 from src.datalayer.interfaces.customer_repository_interface import CustomerRepositoryInterface
 
 from src.domains.customer import Customer, CustomerRegistration
@@ -16,3 +17,6 @@ class CustomerService(ServiceBase):
 
     async def email_already_exists(self, email: str)-> bool:
         return await self.repository.email_already_exists(email) 
+    
+    async def get_customer_by_id(self, id: UUID) -> Customer:
+        return await self.repository.get_customer_by_id(id)

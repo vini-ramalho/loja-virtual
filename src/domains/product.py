@@ -18,7 +18,7 @@ class Product(DomainBase):
     price: float
     unit: UnitOfMeasureName = Field(default= UnitOfMeasureName.UNIT.value)
 
-class ProductRegistration(DomainBase):
+class ProductRegistration(BaseModel):
     name:str
     description: str
     price: float 

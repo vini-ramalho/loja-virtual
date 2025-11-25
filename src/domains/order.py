@@ -33,3 +33,8 @@ class Order(DomainBase):
 
     def total(self):
         return sum([item.price * item.quantity for item in self.items])
+    
+class OrderRegistration(BaseModel):
+    customer_id: UUID
+    status: list[OrderStatus] = Field(default_factory=list)
+    items: list[OrderItem] = Field(default_factory=list)
