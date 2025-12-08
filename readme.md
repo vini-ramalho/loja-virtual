@@ -12,13 +12,15 @@ Principais objetivos:
 - Garantir qualidade e confiabilidade com testes automatizados (TDD).  
 
 ## 📂 Estrutura do projeto
-
+```
 LOJA-VIRTUAL/
 ├── src/ — código fonte
 ├── tests/ — testes automatizados (unitários / de serviço)
 ├── requirements.txt — dependências do projeto
 ├── main.py — ponto de entrada / exemplo de execução
 └── ... — outros arquivos auxiliares (configurações, etc.)
+
+```
 
 ### Destaques da arquitetura
 

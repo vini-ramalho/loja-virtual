@@ -13,10 +13,11 @@ class OrderService(ServiceBase):
     customer_repository: CustomerRepositoryInterface
 
     async def create_order(self, order_registration: OrderRegistration) -> Order:
-        if await self.repository.customer_not_found(order_registration.customer_id):
-            raise CustomerNotFound()
         
         customer = await self.customer_repository.get_customer_by_id(order_registration.customer_id)
+
+        if customer is None:
+            raise CustomerNotFound()
         
         order_status: list[OrderStatus] = [OrderStatus()]
 
@@ -28,8 +29,5 @@ class OrderService(ServiceBase):
 
 
         return await self.repository.create_order(order)
-    
-    async def customer_not_found(self, id: UUID) -> bool:
-        return await self.repository.customer_not_found(id)
 
 

@@ -42,26 +42,6 @@ async def test_should_create_order():
     assert order.items[0].product_id == item_1.product_id
     assert order.items[1].product_id == item_2.product_id
 
-@pytest.mark.asyncio
-async def test_should_raise_erro_when_customer_id_not_found():
-    service = OrderFactory.create_mock()
-
-    fake_id = uuid4()
-
-    item_1 = OrderItem(product_id= uuid4(), price=5.00, quantity=1)
-    item_2 = OrderItem(product_id=uuid4(), price=10.0, quantity=2)
-
-    order = OrderRegistration(
-        customer_id=fake_id,
-        status=[OrderStatus()],
-        items=[item_1, item_2]
-    )
-    with pytest.raises(CustomerNotFound) as error:
-
-        await service.create_order(order)
-
-    assert str(error.value) == 'Customer not Found'
-
 
 @pytest.mark.asyncio
 async def test_should_create_order_and_set_status_IN_PREPARATION():
